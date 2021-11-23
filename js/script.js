@@ -5,14 +5,10 @@ function plusSlides(n) {
   showSlides((slideIndex += n));
 }
 
-// function currentSlide(n) {
-//   showSlides((slideIndex = n));
-// }
-
 function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("mySlides");
-  // let dots = document.getElementsByClassName("dot");
+
   if (n > slides.length) {
     slideIndex = 1;
   }
@@ -22,44 +18,11 @@ function showSlides(n) {
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-  // for (i = 0; i < dots.length; i++) {
-  //   dots[i].className = dots[i].className.replace(" active", "");
-  // }
+
   slides[slideIndex - 1].style.display = "block";
-  // dots[slideIndex - 1].className += " active";
 }
 
 // display modal
-
-// const buttons = document.querySelectorAll(".btn");
-// buttons.forEach((item) => {
-//   item.addEventListener("click", (event) => {
-//     event.preventDefault();
-//     showModal(event);
-//   });
-// });
-
-// const showModal = (e) => {
-//   // console.log(e.target.parentElement.parentElement.parentElement);
-//   // console.log(e.target);
-//   let id = e.target.dataset.id;
-
-//   console.log(id);
-
-//   const modal = document.querySelector(".work-modal");
-//   const modalItem = document.querySelector(".work-modal__item");
-
-//   modal.classList.add("work-modal--show");
-//   modalItem.style.backgroundImage = `url(img/Product_Images/product-${id}.png)`;
-// };
-
-// document.querySelector(".fa-times-circle").addEventListener("click", () => {
-//   closeModal();
-// });
-
-// const closeModal = () => {
-//   document.querySelector(".work-modal").classList.remove("work-modal--show");
-// };
 
 const buttons = document.querySelectorAll(".btn");
 buttons.forEach((item) => {
@@ -70,15 +33,14 @@ buttons.forEach((item) => {
 });
 
 let modal = document.querySelector(".modal");
+let priceOfCar = 0;
 
 const showModal = (e) => {
-  // console.log(e.target.parentElement.parentElement.parentElement);
-  // console.log(e.target);
   let id = e.target.dataset.id;
   console.log(id);
   let nameOfCar = id.split("-");
 
-  let priceOfCar = 0;
+  // let priceOfCar = 0;
 
   if (id === "card-audi-q3") {
     priceOfCar = 29999;
@@ -105,7 +67,7 @@ const showModal = (e) => {
             <h2>${nameOfCar[1]} ${nameOfCar[2]} 2020</h2>
             <div class="work-modal__buy">
               <p>Starting from</p>
-              <p class="work-modal__price"><span>${priceOfCar}</span>&euro;</p>
+              <p class="work-modal__price"><span id="priceId">${priceOfCar}</span>&euro;</p>
             </div>
           </div>
         </div>
@@ -134,7 +96,7 @@ const showModal = (e) => {
                   type="checkbox"
                   name="suspension"
                   id="suspension"
-                  value="0"
+                  value="278.60"
                 />
                 <label for="suspension">Adaptive air suspension - sport</label>
               </td>
@@ -176,8 +138,47 @@ const showModal = (e) => {
     closeModal();
   });
 
+  document
+    .querySelector("#suspension")
+    .addEventListener("click", checkSuspension);
+
+  document
+    .querySelector("#ambiental_led")
+    .addEventListener("click", checkAmbientalLed);
+
   const closeModal = () => {
     modal.remove();
+    // modal.style.display = "none";
+
     window.location.reload();
   };
+};
+
+const checkSuspension = () => {
+  if (document.querySelector("#suspension").checked) {
+    priceOfCar =
+      Number(document.querySelector("#priceId").textContent) +
+      Number(document.querySelector("#suspension").value);
+    document.querySelector("#priceId").innerHTML = priceOfCar.toFixed(2);
+  } else {
+    priceOfCar =
+      priceOfCar - Number(document.querySelector("#suspension").value);
+    document.querySelector("#priceId").innerHTML =
+      Number(priceOfCar).toFixed(2);
+  }
+};
+
+const checkAmbientalLed = () => {
+  if (document.querySelector("#ambiental_led").checked) {
+    priceOfCar =
+      Number(document.querySelector("#priceId").textContent) +
+      Number(document.querySelector("#ambiental_led").value);
+    document.querySelector("#priceId").innerHTML =
+      Number(priceOfCar).toFixed(2);
+  } else {
+    priceOfCar =
+      priceOfCar - Number(document.querySelector("#ambiental_led").value);
+    document.querySelector("#priceId").innerHTML =
+      Number(priceOfCar).toFixed(2);
+  }
 };
