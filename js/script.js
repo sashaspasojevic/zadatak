@@ -75,8 +75,24 @@ const showModal = (e) => {
   // console.log(e.target.parentElement.parentElement.parentElement);
   // console.log(e.target);
   let id = e.target.dataset.id;
-
   console.log(id);
+  let nameOfCar = id.split("-");
+
+  let priceOfCar = 0;
+
+  if (id === "card-audi-q3") {
+    priceOfCar = 29999;
+  }
+  if (id === "card-audi-a4") {
+    priceOfCar = 24999;
+  }
+  if (id === "card-audi-a3") {
+    priceOfCar = 19999;
+  }
+  if (id === "card-audi-q7") {
+    priceOfCar = 39999;
+  }
+
   modal.innerHTML += `<div class="work-modal">
       <div class="work-modal__item">
         <div class="work-modal__item-1">
@@ -86,10 +102,10 @@ const showModal = (e) => {
               alt="Audi Q3"
             />
             <p class="blueText">5 Seats 4 Doors</p>
-            <h2>Audi Q3 2020</h2>
+            <h2>${nameOfCar[1]} ${nameOfCar[2]} 2020</h2>
             <div class="work-modal__buy">
               <p>Starting from</p>
-              <p class="work-modal__price"><span>39.999</span>&euro;</p>
+              <p class="work-modal__price"><span>${priceOfCar}</span>&euro;</p>
             </div>
           </div>
         </div>

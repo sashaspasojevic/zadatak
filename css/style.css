@@ -390,7 +390,8 @@ modal
     .work-modal .work-modal__item_card p {
       margin: 15px; }
     .work-modal .work-modal__item_card h2 {
-      color: #000000; }
+      color: #000000;
+      text-transform: capitalize; }
     .work-modal .work-modal__item_card .blueText {
       color: blueviolet;
       font-size: 0.9rem; }
@@ -408,10 +409,11 @@ modal
       width: 220px;
       height: 70px;
       border-radius: 20px;
-      line-height: 15px;
+      line-height: 12px;
       padding: 5px;
       text-align: center;
-      margin: 0 auto; }
+      margin: 0 auto;
+      font-size: 0.8rem; }
       .work-modal__item .work-modal__item-1 .work-modal__buy .work-modal__price {
         font-size: 2rem; }
   .work-modal__item .work-modal__item-2 {

@@ -605,6 +605,7 @@ modal
 
     h2 {
       color: $color-primery;
+      text-transform: capitalize;
     }
 
     .blueText {
@@ -629,10 +630,11 @@ modal
       width: 220px;
       height: 70px;
       border-radius: 20px;
-      line-height: 15px;
+      line-height: 12px;
       padding: 5px;
       text-align: center;
       margin: 0 auto;
+      font-size: 0.8rem;
       .work-modal__price {
         font-size: 2rem;
       }
