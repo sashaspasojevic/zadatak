@@ -1,1 +1,1 @@
-Website is published https://sashaspasojevic.github.io/FSD_zadatak/
+Website is published https://sashaspasojevic.github.io/zadatak/
